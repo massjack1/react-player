@@ -20,6 +20,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         const duration = e.target.duration;
         setSongInfo({...songInfo, currentTime: current, duration});
     };
+    //Event Handler
     const getTime = (time) => {
         return(
             Math.floor(time /60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
@@ -27,12 +28,12 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
     };
     const dragHandler = (e) => {
         audioRef.current.currentTime = e.target.value;    
-        setSongInfo({...songInfo, currentTime: e.target.value});
+        setSongInfo({ ...songInfo, currentTime: e.target.value});
     }
     //State
     const [songInfo, setSongInfo] = useState({
-        currentTime: null,
-        duration: null,
+        currentTime: 0,
+        duration: 0,
 
     });
     return(
