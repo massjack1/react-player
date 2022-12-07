@@ -41,6 +41,7 @@ const timeUpdateHandler = (e) => {
       songs={songs} 
       setCurrentSong={setCurrentSong}
       isPlaying={isPlaying}
+      setSongs={setSongs}
       />
       <audio 
             onTimeUpdate={timeUpdateHandler}
