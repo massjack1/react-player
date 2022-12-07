@@ -6,6 +6,14 @@
 h1,h2,h3{
     color: rgb(54, 54, 54);
 }
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+h3,h4 {
+    font-weight: 400;
+    color: rgba(43, 59, 75, 0.825)
+}
 
 @import "./song";
 @import "./player";
+@import "./library";
