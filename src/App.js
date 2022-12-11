@@ -22,10 +22,21 @@ function App() {
     duration: 0,
 });
 const [libraryStatus, setLibraryStatus] = useState(false);
+//Event Handlers
 const timeUpdateHandler = (e) => {
   const current = e.target.currentTime;
   const duration = e.target.duration;
   setSongInfo({...songInfo, currentTime: current, duration});
+};
+const songEndHandler = async () => {
+  let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+  await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+
+  if (isPlaying) {
+    setTimeout(() => {
+      audioRef.current.play();
+    }, 100);
+  }
 };
   return (
     <div className="App">
@@ -55,6 +66,7 @@ const timeUpdateHandler = (e) => {
             onLoadedMetadata={timeUpdateHandler} 
             ref={audioRef} 
             src={currentSong.audio}
+            onEnded={songEndHandler}
             ></audio>
     </div>
   );
